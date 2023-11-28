@@ -1,0 +1,318 @@
+/* @font-face {
+  font-family: montserrat;
+  src: url(../fonts/Montserrat-SemiBold.otf);
+}
+
+.content {
+  padding-top: 150px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content .title-header {
+  width: 430px;
+  background: #61c0d3;
+  border: 2px solid #464646;
+  border-bottom: none;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 10px;
+  padding-left: 30px;
+  font-size: 20px;
+}
+
+.content .title-header p {
+  font-size: 20px;
+  color: white;
+}
+
+form {
+  width: 430px;
+  border: 2px solid #464646;
+  border-top: none;
+  padding: 30px;
+  background: #fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-family: montserrat;
+}
+
+form label, .mb-3 .form-text {
+  color: #3c3c3c;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.mb-3 .form-text {
+  font-size: 13px;
+  color: #a5a5a5;
+  margin-bottom: 10px;
+}
+
+form input {
+  font-family: montserrat;
+}
+
+.mb-3 .emailinput,
+.mb-3 .textinput {
+  display: block;
+  border: 2px solid #ccc;
+  width: 95%;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+#div_id_image label {
+  display: block;
+}
+
+.input-group, .input-group a{
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 13px;
+}
+
+.input-group a{
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#div_id_image .input-group {
+  display: none;
+}
+
+#id_image {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 22px;
+  width: 95%;
+}
+
+form ::-webkit-file-upload-button {
+  color: #ffffff;
+  font-family: montserrat;
+  background: #61c0d3;
+  padding: 20px;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+::-webkit-file-upload-button:hover {
+  background: #38688e;
+}
+
+.text-break a {
+  width: 200px;
+}
+
+button, .back-button{
+  float: right;
+  background: #61c0d3;
+  font-family: montserrat;
+  padding: 10px 15px;
+  color: #0a0a0a;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  font-size: 13px;
+  transition: all .2s;
+}
+
+button:hover, .back-button:hover{
+  background: #38688e;
+  color: white;
+  cursor: pointer;
+} */
+
+.user-profile-container {
+  width: 25%;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-image: url(../images/bg-images/evaluation-page-bg.jpg);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.user-profile-container img {
+  width: 160px;
+  height: 160px;
+  margin-top: 11vh;
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile-container .details {
+  width: 80%;
+  background: rgba(0, 0, 0, 80%);
+  color: white;
+  margin: 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile-container .details h2 {
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+  padding: 3%;
+  width: 94%;
+  background: rgba(255, 255, 255, 10%);
+}
+
+.user-profile-container .details p {
+  text-align: center;
+  font-size: 15px;
+  margin: 0;
+  padding: 2%;
+  padding-bottom: 0;
+}
+
+.user-profile-container .details .logout-button {
+  background-color: rgb(255, 189, 20);
+  color:black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: montserrat;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 2% 0;
+  transition: all .2s;
+}
+
+.user-profile-container .details .logout-button:hover {
+  background-color: rgb(214, 153, 0);
+}
+
+.user-profile-details-container {
+  width: 75%;
+  height: 100%;
+  background: white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.user-profile-details-container form {
+  width: 90%;
+  margin: 0 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-profile-details-container form h2 {
+  margin: 2vh 0;
+  font-size: 22px;
+  margin-right: auto;
+}
+
+.user-profile-details-container form hr {
+  margin: 0;
+}
+
+.user-profile-details-container form .input-container {
+  width: 100%;
+  margin-bottom: 1vh;
+}
+
+.user-profile-details-container form .input-container label {
+  font-size: 18px;
+  display: block;
+}
+
+.user-profile-details-container form .input-container input {
+  height: 25px;
+  width: 99%;
+  padding: 2px;
+  border: 2px solid rgb(104, 104, 104);
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.user-profile-details-container form .input-container #id_image {
+  height: fit-content;
+  width: 40%;
+  padding: 0;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.user-profile-details-container form .input-container ::-webkit-file-upload-button {
+  color: white;
+  font-family: montserrat;
+  background: rgb(0, 183, 255);;
+  padding: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.user-profile-details-container form .input-container ::-webkit-file-upload-button:hover {
+  background: rgb(0, 145, 202);
+}
+
+.user-profile-details-container form button {
+  background-color: rgb(255, 189, 20);
+  color:black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: montserrat;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 1% 0;
+  width: fit-content;
+  transition: all .2s;
+}
+
+.user-profile-details-container form button:hover {
+  background-color: rgb(214, 153, 0);
+}
+
+.user-profile-details-container form .full-name {
+  margin: 2vh 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.user-profile-details-container form .full-name .first {
+  width: 45%;
+  margin-right: 10%;
+}
+
+.user-profile-details-container form .full-name .last {
+  width: 45%;
+}
+
+.user-profile-details-container form .full-name .name label {
+  font-size: 18px;
+}
+
+.user-profile-details-container form .full-name .name input {
+  height: 25px;
+  width: 98%;
+  padding: 2px;
+  border: 2px solid rgb(104, 104, 104);
+  border-radius: 4px;
+  margin-top: 4px;
+}

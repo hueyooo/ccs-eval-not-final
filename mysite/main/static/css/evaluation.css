@@ -1,0 +1,106 @@
+.content-container {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/bg-images/evaluation-page-bg.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 15px;
+  position: relative;
+}
+
+.evaluated-container {
+  margin: auto;
+  width: 70%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 7.5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: rgb(5, 1, 113); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0);
+}
+
+.evaluated-container a {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10%;
+  background: linear-gradient(to right, rgb(0, 183, 255), rgb(5, 1, 113));
+  height: 80px;
+  border-radius: 5px;
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+  transition: all .2s;
+  position: relative;
+}
+
+.evaluated-container a:hover {
+  background-blend-mode: overlay;
+  background-color: rgb(65, 65, 65);
+}
+
+.evaluated-container a img{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  left: 3%;
+  position: absolute;
+}
+
+.evaluated-container a .details{
+  background: rgba(0, 0, 0, 50%);
+  width: 100%;
+  margin-left: 7%;
+  padding-left: 80px;
+}
+
+.evaluated-container a .details h2{
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.evaluated-container a .details p{
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.evaluated-container a span{
+  position: absolute;
+  right: 3%;
+  top: 50px;
+  color: rgb(255, 189, 20);
+  font-size: 16px;
+}
+
+.evaluated-container .return-btn {
+  background: none;
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 40px auto;
+  font-size: 30px;
+  color: rgb(0, 157, 255);
+}
+
+.evaluated-container .return-btn:hover {
+  background: none;
+  text-decoration: underline;
+}

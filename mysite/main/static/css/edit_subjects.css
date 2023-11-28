@@ -1,0 +1,252 @@
+* {
+  font-family: montserrat;
+}
+
+.image-bg{
+  width: 25%;
+  height: 100%;
+  background: rgb(76, 76, 76);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  position: relative;
+  background-image: url(../images/bg-images/single-sub-bg.jpg);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
+}
+
+.image-bg .back-btn {
+  position: absolute;
+  height: 5vh;
+  background-color: rgb(255, 189, 20);
+  width: 10vw;
+  min-width: 75px;
+  top: 2vh;
+  left: 13vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  transition: all .2s;
+}
+
+.image-bg .back-btn:hover {
+  background-color: rgb(214, 153, 0);
+}
+
+.image-bg .back-btn img {
+  height: 4vh;
+  margin-right: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 7.5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: rgb(5, 1, 113); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0);
+}
+
+.subjects-container {
+  width: 75%;
+  height: 100%;
+  background: white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subjects-container h2 {
+  margin: 2vh 0;
+  font-size: 22px;
+}
+
+.subjects-container hr {
+  margin: 0;
+}
+
+.subjects-container .options{
+  height: 8%;
+  width: 90%;
+  display: flex;
+  margin-top: 20px;
+}
+
+.subjects-container .options div {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background: rgba(0, 0, 0, .6);
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.subjects-container .options div:hover {
+  background: rgba(0, 0, 0, .5);
+}
+
+.subjects-container .options div.active {
+  background: rgba(0, 0, 0, .5);
+  color: rgb(255, 189, 20);
+}
+
+.subjects-container .subjects-content {
+  height: 72%;
+  width: 90%;
+}
+
+.subjects-container .subjects-content .subjects {
+  display: none;
+}
+
+.subjects-container .subjects-content .subjects.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 32px;
+  background: rgba(0, 0, 0, .8);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.subjects-container .subjects-content .subjects .subject {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10%;
+  background: linear-gradient(to right, rgb(0, 183, 255), rgb(5, 1, 113));
+  height: 80px;
+  width: 70%;
+  border-radius: 5px;
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+  transition: all .2s;
+  position: relative;
+}
+
+
+.subjects-container .subjects-content .subjects .add-btn {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10%;
+  background: linear-gradient(to right, rgb(0, 183, 255), rgb(5, 1, 113));
+  height: 75px;
+  width: 70%;
+  border-radius: 5px;
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+  transition: all .2s;
+  position: relative;
+}
+
+.subjects-container .subjects-content .subjects .add-btn:hover {
+  background-blend-mode: overlay;
+  background-color: rgb(65, 65, 65);
+}
+
+.subjects-container .subjects-content .subjects .subject .sem {
+  height: 75px;
+  width: 75px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  left: 3%;
+  position: absolute;
+}
+
+.subjects-container .subjects-content .subjects .add-btn img{
+  height: 75px;
+  width: 75px;
+  background-color: white;
+  border-radius: 50%;
+  left: 3%;
+  position: absolute;
+}
+
+.subjects-container .subjects-content .subjects .subject .details,
+.subjects-container .subjects-content .subjects .add-btn .details {
+  background: rgba(0, 0, 0, 50%);
+  width: 100%;
+  margin-left: 7%;
+  padding-left: 80px;
+}
+
+.subjects-container .subjects-content .subjects .add-btn .details {
+  display: flex;
+  align-items: center;
+}
+
+.subjects-container .subjects-content .subjects .subject .details h3,
+.subjects-container .subjects-content .subjects .add-btn .details h3 {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.subjects-container .subjects-content .subjects .add-btn .details h3 {
+  margin: 26px 0;
+}
+
+.subjects-container .subjects-content .subjects .subject .details p {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.subjects-container .subjects-content .subjects .subject .function a {
+  position: absolute;
+  height: fit-content;
+  width: fit-content;
+  font-size: 16px;
+  background-color: green;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 3px;
+  color: black;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.subjects-container .subjects-content .subjects .subject .function .del-btn {
+  background-color: rgb(184, 184, 184);
+  right: 3%;
+  top: 20%;
+}
+
+.subjects-container .subjects-content .subjects .subject .function .del-btn:hover {
+  background-color: rgb(143, 143, 143);
+}
+
+.subjects-container .subjects-content .subjects .subject .function .edit-btn {
+  background-color: rgb(255, 189, 20);
+  right: 15%;
+  top: 20%;
+}
+
+.subjects-container .subjects-content .subjects .subject .function .edit-btn:hover {
+  background-color: rgb(214, 153, 0);
+}

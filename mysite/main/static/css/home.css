@@ -1,0 +1,134 @@
+/* @font-face {
+  font-family: montserrat;
+  src: url(../fonts/Montserrat-Bold.otf);
+} */
+
+.content-image {
+  width: 55%;
+  height: 100%;
+  background: rgb(54, 54, 54);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-image: url(../images/bg-images/bg-home.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: screen;
+}
+
+.content-image .welcome {
+  background: rgba(255, 255, 255, 60%);
+  margin: 10px;
+  margin-top: 15vh;
+  padding: 15px;
+}
+
+.content-image .welcome h1{  
+  font-size: 30px;
+  margin-top: 0;
+}
+
+.content-image .welcome p{  
+  font-size: 15px;
+  margin: 0;
+  max-width: 70%;
+  text-align: justify;
+}
+
+.content-image .welcome p span{  
+  font-size: 15px;
+  color: rgb(0, 46, 64);
+  font-style: italic;
+}
+
+.content-image .announcement {
+  background: rgba(0, 0, 0, 80%);
+  margin: 10px;
+  margin-top: 5vh;
+  width: 70%;
+}
+
+.content-image .announcement .header {
+  background: rgba(255, 255, 255, 10%);
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  width: 96%;
+  padding: 2%;
+  color: rgb(227, 182, 66);
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-image .announcement .details {
+  text-align: left;
+  padding: 2%;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-buttons {
+  width: 45%;
+  height: 100%;
+  background: white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-buttons a {
+  text-decoration: none;
+  color: white;
+}
+
+.evaluation-box, .user-box,
+.settings-box, .logout-box {
+  width: 80%;
+  height: 130px;
+  background-color: rgb(18, 18, 18);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: screen;
+  background-repeat: none;
+  margin: 15px 0;
+  border-radius: 10px;
+  transition: all .2s;
+}
+
+.evaluation-box {
+  background-image: url(../images/bg-images/eval-bg=2.jpg);
+}
+
+.user-box {
+  background-image: url(../images/bg-images/user-bg-2.jpg);
+}
+
+.settings-box {
+  background-image: url(../images/bg-images/sett-bg-3.jpg);
+}
+
+.logout-box {
+  background-image: url(../images/bg-images/logout-bg.jpg);
+}
+
+.evaluation-box:hover, .user-box:hover,
+.settings-box:hover, .logout-box:hover {
+  transform: scale(1.05);
+}
+
+.content-buttons a h2 {
+  font-size: 25px;
+  float: right;
+  padding: 5px 8px;
+  padding-right: 20px;
+  width: 8vw;
+  background: rgba(0, 0, 0, 0.8);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}

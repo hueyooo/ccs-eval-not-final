@@ -1,0 +1,152 @@
+/* @font-face {
+  font-family: montserrat;
+  src: url(../fonts/Montserrat-Bold.otf);
+} */
+
+* {
+  font-family: montserrat;
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(246, 246, 246);
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 5%;
+  background: white;
+  height: 70px;
+  width: 90vw;
+  position: relative;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 5%);
+  z-index: 10000;
+}
+
+nav .logo-container {
+  position: absolute;
+  left: 5%;
+  top: 0;
+  height: 90px;
+  width: 200px;
+  background: rgb(0, 183, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+nav .logo-container .logo img {
+  height: 90px;
+}
+
+nav .navigation ul {
+  list-style: none;
+  display: flex;
+}
+
+nav .navigation ul li {
+  margin: 10px;
+}
+
+nav .navigation ul li a {
+  text-decoration: none;
+  color: black;
+  transition: all .2s;
+}
+
+nav .navigation ul li a:hover {
+  color: rgb(0, 183, 255);
+}
+
+nav .profile-container {
+  border: 1px solid rgb(112, 112, 112);
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background: rgb(255, 189, 20);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+nav .profile-container.active {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: none;
+  cursor: default;
+}
+
+nav .profile-container .profile-details {
+  margin: 0;
+  padding: 0;
+  margin-right: 10px;
+  text-align: right;
+}
+
+nav .profile-container .profile-details hr {
+  margin: 0;
+  padding: 0;
+}
+
+nav .profile-container .profile-details .role {
+  font-size: 12px;
+}
+
+nav .profile-container img{
+  height: 45px;
+  width: 45px;
+  margin-right: 2.5px;
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+nav .profile-container .profile-box {
+  display: none;
+  position: absolute;
+  width: 150px;
+  background: rgb(255, 189, 20);
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border: 1px solid rgb(112, 112, 112);
+  border-top: none;
+  right: -1px;
+  top: 50px;
+}
+
+nav .profile-container.active .profile-box {
+  display: block;
+}
+
+nav .profile-container .profile-box li {
+  list-style: none;
+  text-align: center;
+  margin: 10px;
+} 
+
+nav .profile-container .profile-box li a {
+  text-decoration: none;
+  color: black;
+} 
+
+.content {
+  justify-content: center;
+  display: flex;
+  padding: 4vh 5vw 7.45vh 5vw ;
+  height: 81vh;
+  z-index: 1;
+}
