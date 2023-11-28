@@ -1,0 +1,279 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/irreg_register_section.css' %}">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <div class="container">
+    <div class="it-container"> 
+      <div class="title-header">Information Technology</div>   
+      <div class="sections">
+        {% for sec in sections%}
+        {% if 'IT' in sec %}
+        <div class="checkbox">
+          <input type="checkbox" name="{{sec}}" value="{{sec}}" class="it-sec">{{sec}}
+        </div>   
+        {% endif%}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="it-container"> 
+      <div class="title-header">Information Systems</div>   
+      <div class="sections">
+        {% for sec in sections%}
+        {% if 'IS' in sec %}
+        <div class="checkbox">
+          <input type="checkbox" name="{{sec}}" value="{{sec}}" class="it-sec">{{sec}}
+        </div>   
+        {% endif%}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="it-container"> 
+      <div class="title-header">Computer Science</div>   
+      <div class="sections">
+        {% for sec in sections%}
+        {% if 'CS' in sec %}
+        <div class="checkbox">
+          <input type="checkbox" name="{{sec}}" value="{{sec}}" class="it-sec">{{sec}}
+        </div>   
+        {% endif%}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="it-container"> 
+      <div class="title-header">Associate in Computer Technology</div>   
+      <div class="sections">
+        {% for sec in sections%}
+        {% if 'ACT' in sec %}
+        <div class="checkbox">
+          <input type="checkbox" name="{{sec}}" value="{{sec}}" class="it-sec">{{sec}}
+        </div>   
+        {% endif%}
+        {% endfor %}
+      </div>
+    </div>
+    <form method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+      {% csrf_token %}
+      <div class="textbox">
+        <textarea name="section" id="sec" cols="30" rows="10" readonly required></textarea>
+      </div>
+      <button type="button" onclick="addSec()">Add</button>
+      <button type="submit">Next</button>
+      <button type="button" onclick="resetChecked()">Clear</button>
+      <a href="/logout">Logout</a>
+    </form>
+  </div> -->
+
+  <div class="sections-container">
+    <h1>Set up your sections</h1>
+    <div class="scrollable">
+      <div class="course-container">
+        <div class="course">Information Technology</div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IT-1' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IT-2' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IT-3' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IT-4' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="course-container">
+        <div class="course">Computer Science</div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'CS-1' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'CS-2' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'CS-3' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'CS-4' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="course-container">
+        <div class="course">Information Systems</div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IS-1' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IS-2' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IS-3' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'IS-4' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="course-container">
+        <div class="course">Associate in Computer Technology</div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'ACT-1' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="year-container">
+          {% for sec in sections %}
+          {% if 'ACT-2' in sec %}
+          <div class="checkbox">
+            <input type="checkbox" name="{{sec}}" value="{{sec}}" id="{{sec}}" class="sec-checked">
+            <label for="{{sec}}">{{sec}}</label>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="profile-container">
+      <img src="{{user.image.url}}" alt="">
+      <div class="details">
+        <h2>{{user}}</h2>
+        <p>{{user.username}}</p>
+        <a href="/logout" class="logout-button">Logout</a>
+      </div>
+    </div>
+    <div class="summary-container">  
+      <form method="post" onsubmit="return confirm('Are you sure you want to submit this form?');">
+        {% csrf_token %}
+        <label for="section">Sections</label>
+        <textarea name="section" id="sec" cols="30" rows="10" readonly required></textarea>
+        <button type="button" onclick="addSec()">Add</button>
+        <button type="submit">Next</button>
+        <button type="button" onclick="resetChecked()" class="clr-btn">Clear</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function resetChecked(){
+      var get = document.getElementsByClassName('sec-checked');
+
+      for (var i=0; i<get.length; i++){
+        get[i].checked= false;
+      }
+
+      var clear = document.getElementById('sec');
+      clear.innerHTML = ''
+    };
+  </script>
+  <script>
+    function addSec() {
+      var checkboxes = document.querySelectorAll(".sec-checked");
+      var checkedValues = [];
+
+      checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+          checkedValues.push(checkbox.value);
+        }
+      });
+
+      var resultDiv = document.getElementById("sec");
+      resultDiv.innerHTML = checkedValues.join(", ");
+    }
+  </script>
+</body>
+</html>

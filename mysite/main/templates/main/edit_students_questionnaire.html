@@ -1,0 +1,147 @@
+{% extends "main/base.html" %} 
+{% block title %}Students' Questionnaire{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/view_questionnaire.css' %}{% endblock %} 
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <div class="questionnaire-container">
+    <h1>Students' Questionnaire</h1>
+    <hr size="4px" width="90%" color="gold">
+    <div class="questionnaire-content">
+      <div class="questions-container">
+        <table>
+          <thead>
+            <tr>
+              <th class="question">Course Planning/Preparation</th>
+              <th>Functions</th>
+            </tr>
+          </thead> 
+          <tbody>
+            {% for question in questions %}
+            {% if question.category == 'course planning' %}
+            <tr>
+              <td>{{ question.question }}</td>
+              <td class="function">
+                <a href="{% url 'update_students_questionnaire' id=question.id %}">Edit</a>
+                <a href="{% url 'delete_students_questionnaire' id=question.id %}" class="del-btn">Delete</a>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            <tr>
+              <td class="add-btn">Add question</td>
+              <td class="function add-btn">
+                <a href="{% url 'add_students_questionnaire' category='course planning' %}">Add</a>
+              </td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th class="question">Instructional Delivery</th>
+              <th>Functions</th>
+            </tr>
+          </thead> 
+          <tbody>
+            {% for question in questions %}
+            {% if question.category == 'instructional delivery' %}
+            <tr>
+              <td>{{ question.question }}</td>
+              <td class="function">
+                <a href="{% url 'update_students_questionnaire' id=question.id %}">Edit</a>
+                <a href="{% url 'delete_students_questionnaire' id=question.id %}" class="del-btn">Delete</a>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            <tr>
+              <td class="add-btn">Add question</td>
+              <td class="function add-btn">
+                <a href="{% url 'add_students_questionnaire' category='instructional delivery' %}">Add</a>
+              </td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th class="question">Assessment of Student Learning</th>
+              <th>Functions</th>
+            </tr>
+          </thead> 
+          <tbody>
+            {% for question in questions %}
+            {% if question.category == 'assessment of student learning' %}
+            <tr>
+              <td>{{ question.question }}</td>
+              <td class="function">
+                <a href="{% url 'update_students_questionnaire' id=question.id %}">Edit</a>
+                <a href="{% url 'delete_students_questionnaire' id=question.id %}" class="del-btn">Delete</a>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            <tr>
+              <td class="add-btn">Add question</td>
+              <td class="function add-btn">
+                <a href="{% url 'add_students_questionnaire' category='assessment of student learning' %}">Add</a>
+              </td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th class="question">Classroom Management</th>
+              <th>Functions</th>
+            </tr>
+          </thead> 
+          <tbody>
+            {% for question in questions %}
+            {% if question.category == 'classroom management' %}
+            <tr>
+              <td>{{ question.question }}</td>
+              <td class="function">
+                <a href="{% url 'update_students_questionnaire' id=question.id %}">Edit</a>
+                <a href="{% url 'delete_students_questionnaire' id=question.id %}" class="del-btn">Delete</a>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            <tr>
+              <td class="add-btn">Add question</td>
+              <td class="function add-btn">
+                <a href="{% url 'add_students_questionnaire' category='classroom management' %}">Add</a>
+              </td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th class="question">Personality and Poise</th>
+              <th>Functions</th>
+            </tr>
+          </thead> 
+          <tbody>
+            {% for question in questions %}
+            {% if question.category == 'personality and poise' %}
+            <tr>
+              <td>{{ question.question }}</td>
+              <td class="function">
+                <a href="{% url 'update_students_questionnaire' id=question.id %}">Edit</a>
+                <a href="{% url 'delete_students_questionnaire' id=question.id %}" class="del-btn">Delete</a>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            <tr>
+              <td class="add-btn">Add question</td>
+              <td class="function add-btn">
+                <a href="{% url 'add_students_questionnaire' category='personality and poise' %}">Add</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

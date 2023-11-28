@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %} 
+{% block title %}View/Edit Instructor per Section{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/subintsec.css' %}{% endblock %}
+{% block content %}
+  <h1 class="header">View/Edit Instructor per Section</h1>
+  <div class="functions">
+    <a class="bulk-container" href="{% url 'add_bulk_instructor_per_section' %}" >
+      <div class="select">
+        Bulk Add
+      </div>
+    </a>
+    <a class="single-container" href="{% url 'edit_instructor' %}">
+      <div class="select">
+        Single Add/Edit/Remove/View
+      </div>
+    </a>
+  </div>
+{% endblock %}

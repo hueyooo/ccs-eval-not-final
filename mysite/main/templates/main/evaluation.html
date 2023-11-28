@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %} 
+{% block title %}Evaluation{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/evaluation.css' %}{% endblock %} 
+{% block content %}
+  <div class="content-container">
+    <div class="evaluated-container">
+      {% if check == 1 %}
+      {% for eval in evaluate %}
+      {% if user.role == 'Student' %}
+      <a href="{% url 'questionnaire' evaluated=eval.inst.user.id %}">
+        <img src="{{ eval.inst.user.image.url }}" alt="">
+        <div class="details">
+          <h2>{{ eval.inst }}</h2>
+          <p>{{ eval.subj}}</p>
+        </div>
+        {% for comp in completed %} 
+        {% if eval.inst.user.id == comp %}
+        <span class="success">Completed</span>
+        {% endif %} 
+        {% endfor %}
+      </a>
+      {% elif user.role == 'Instructor' and user.instructor.access_lvl != 3 %}
+      <a href="{% url 'questionnaire' evaluated=eval.user.id %}">
+        <img src="{{ eval.user.image.url }}" alt="">
+        <div class="details">
+          <h2>{{ eval.user }}</h2>
+          {% if eval.department == 'IT'%}
+          <p>Information Technology</p>
+          {% else %}
+          <p>Computer Science/Information Systems/Associate in Computer Technology</p>
+          {% endif %}
+        </div>
+        {% for comp in completed %} 
+        {% if eval.user.id == comp %}
+        <span class="success">Completed</span>
+        {% endif %}
+        {% endfor %}
+      </a>
+      {% elif user.role == 'Instructor' and user.instructor.access_lvl == 3 %}
+      <a href="{% url 'dean_questionnaire' evaluated=eval.user.id %}">
+        <img src="{{ eval.user.image.url }}" alt="">
+        <div class="details">
+          <h2>{{ eval.user }}</h2>
+          {% if eval.department == 'IT'%}
+          <p>Information Technology</p>
+          {% else %}
+          <p>Computer Science/Information Systems/Associate in Computer Technology</p>
+          {% endif %}
+        </div>
+        {% for comp in completed %} 
+        {% if eval.user.id == comp %}
+        <span class="success">Completed</span>
+        {% endif %}
+        {% endfor %}
+      </a>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+      <a href="/home" class="return-btn"> Evaluation is closed. Go back to dashboard </a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

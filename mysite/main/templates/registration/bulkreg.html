@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% block title %}Register {{role}}s{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/bulkreg.css' %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div {% if role == 'Student' %} class="image-bg stud" {% elif role == 'Instructor' %} class="image-bg inst" {% endif %}>
+    <a class="back-btn" href="/sign-up">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if role == 'Student' %}
+    <h1>Register Students</h1>
+    <hr width="90%" size="4px" color="gold">
+    <div class="notes">
+      <h2>Notes:</h2>
+      <ul>
+        <li>Only accepts CSV(.csv), Excel(.xlxs), or Text(.txt) files</li>
+        <li>Must strictly follow (first_name,last_name,student_number,section) format as header</li>
+        <li>Sample data(for .txt files): Juan,Dela Cruz,2019123456,IT-1A</li>
+        <li>If the student is an irregular student, type 'IRREG' in the 'section' column</li>
+      </ul>
+    </div>  
+    {% elif role == 'Instructor' %}
+    <h1>Register Instructors</h1>
+    <hr width="90%" size="4px" color="gold">
+    <div class="notes">
+      <h2>Notes:</h2>
+      <ul>
+        <li>Only accepts CSV(.csv), Excel(.xlxs), or Text(.txt) files</li>
+        <li>Must strictly follow (first_name,last_name,email,department,role) format as header</li>
+        <li>'role' column should only consist of 'Instructor', 'Chairperson', or 'Dean'</li>
+        <li>'department' column should be either 'IT' or 'CS/IS/ACT' for Instructors and Chairpersons</li>
+        <li>'department' column should be 'CCS' for the Dean</li>
+      </ul>
+    </div>
+    {% endif %}
+    {% if messages %}
+      <ul class="errorlist nonfield">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="input-container">
+      {{form}}
+    </div>
+    <button type="submit" class="btn btn-success">Apply</button>
+  </form>
+{% endblock %}

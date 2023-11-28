@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block title %}Register Users{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/role.css' %}{% endblock %}
+{% block content %}
+  <h1 class="header">Register Users</h1>
+  <div class="roles">
+    <a class="student-container" href="{% url 'sign_up' role=roles %}" >
+      <div class="select">
+        Students
+      </div>
+    </a>
+    <a class="instructor-container" href="{% url 'sign_up' role=rolei %}">
+      <div class="select">
+        Instructors
+      </div>
+    </a>
+  </div>
+{% endblock %}

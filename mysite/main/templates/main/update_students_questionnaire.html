@@ -1,0 +1,22 @@
+{% extends "main/base.html" %} 
+{% block title %}Edit Question(Students){% endblock %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style %}{% static 'css/edit_add_questionnaire.css' %}{% endblock %}
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation/edit_students_questionnaire">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Edit Question</h1>
+    <hr width="90%" size="4px" color="gold">
+    <div class="input-container">     
+      {{form}}
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% block style %} {% endblock %}" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>   
+    <nav>
+      <div class="logo-container">
+        <div class="logo">
+          <img src="{% static 'images/logo.png' %}" alt="">
+        </div>
+      </div>
+      <div class="navigation">
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/evaluation">Evaluation</a></li>
+          {% if user.is_superuser %}
+          <li><a href="/settings">Settings</a></li>
+          {% elif user.role == 'Instructor' and user.instructor.access_lvl == 3 %}
+          <li><a href="/settings">Settings</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="profile-container">
+        <div class="profile-details">
+          <div class="name">{{ user.first_name }}</div>
+          <hr size="1px" width="100%" color="rgb(112, 112, 112)"/>
+          {% if user.role == '' or user.role == 'Secretary' %}
+          <div class="role">Secretary</div>
+          {% elif user.role == 'Student' %}
+          <div class="role">Student</div>
+          {% elif user.role == 'Instructor' and user.instructor.access_lvl == 1 %}
+          <div class="role">Instructor</div>
+          {% elif user.role == 'Instructor' and user.instructor.access_lvl == 2 %}
+          <div class="role">Chairperson</div>
+          {% elif user.role == 'Instructor' and user.instructor.access_lvl == 3 %}
+          <div class="role">Dean</div>
+          {% endif %}
+        </div>
+        <img src="{{ user.image.url }}" alt="">
+        <div class="profile-box">
+          <li><a href="/profile/update">Edit Profile</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">{% block content %} {% endblock %}</div>
+
+    <script>
+      $(document).ready(function () {
+        $(".profile-container").click(function () {
+        $(this).toggleClass("active");
+        });
+      });
+    </script>
+  </body>
+</html>

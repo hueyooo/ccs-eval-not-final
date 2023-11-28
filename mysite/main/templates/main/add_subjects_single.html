@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% block title %}Add Subject{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/edit_add_subject.css' %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation/subjects/edit-subjects">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Add Subject</h1>
+    <hr width="90%" size="4px" color="gold">
+    {% if messages %}
+    <ul class="errorlist">
+    {% for message in messages %}
+      <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="input-container">     
+      <label for="description">Description</label>
+      <input name="description" required>
+      <label for="code">Code</label>
+      <input name="code" required>
+      <label for="course">Course</label>
+      <select name="course" required id="id_course" disabled>
+        <option value="IT" {% if course == 'IT' %} selected="selected" {%endif%}>Information Technology</option>
+        <option value="IS" {% if course == 'IS' %} selected="selected" {%endif%}>Information System</option>
+        <option value="CS" {% if course == 'CS' %} selected="selected" {%endif%}>Computer Science</option>
+        <option value="ACT" {% if course == 'ACT' %} selected="selected" {%endif%}>Associate in Computer Technology</option>   
+      </select>
+      <label for="year">Year</label>
+      <select name="year" required id="id_year">
+        <option value="First">First Year</option>
+        <option value="Second">Second Year</option>
+        <option value="Third">Third Year</option>
+        <option value="Fourth">Fourth Year</option>
+      </select>
+      <label for="semester">Semester</label>
+      <select name="semester" required>
+        <option value="First">First Semester</option>
+        <option value="Second">Second Semester</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
+  <script>
+    $(document).ready(function() {
+
+      $("#id_course").change(function() {
+        var val = $(this).val();
+        if (val == "IT" || val == "IS" || val == "CS") {
+          $("#id_year").html("<option value='First'>First Year</option><option value='Second'>Second Year</option><option value='Third'>Third Year</option><option value='Fourth'>Fourth Year</option>");
+        } else if (val == "ACT") {
+          $("#id_year").html("<option value='First'>First Year</option><option value='Second'>Second Year</option>");
+        } 
+      });
+    });
+  </script>
+{% endblock %}

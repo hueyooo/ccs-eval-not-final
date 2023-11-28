@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %} 
+{% block title %}Set Evaluation Schedule{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/eval_sched.css' %}{% endblock %} 
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/settings">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Set Evaluation Schedule</h1>
+    <hr width="90%" size="4px" color="gold">
+    <div class="notes">
+      <h2>Notes:</h2>
+      <ul>
+        <li>Double check the questionnaires</li>
+        <li>Double check the details(Instructors and Subjects) for each section</li>
+        <li>Double check the if all Instructors are registered to the system</li>
+        <li>Once the evaluation schedule is ongoing, adding questions, subjects, and instructors per section won't be available</li>
+        <li>Also, closing the evaluation will archive all of the current data collected</li>
+      </ul>
+    </div>
+    <div class="input-container">
+      {{form}}
+    </div>
+    <div class="buttons">
+      <button type="submit" class="btn btn-success">Set Schedule</button>
+    </div>
+  </form>
+{% endblock %}

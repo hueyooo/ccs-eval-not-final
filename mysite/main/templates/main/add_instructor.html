@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% block title %}Add Instructor per Section{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/edit_add_instructor_per_sec.css' %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation/subintsec/edit-instructor">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Add Instructor per Section</h1>
+    <hr width="90%" size="4px" color="gold">
+    {% if messages %}
+    <ul class="errorlist">
+    {% for message in messages %}
+      <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="input-container">     
+      <label for="section">Section</label>
+      <input name="section" value="{{ section }}" disabled>
+      <label for="instructor">Instructor</label>
+      <select name="instructor">
+        {% for inst in instructors %}
+        {% if inst.access_lvl != 3 %}
+        <option value="{{ inst.user_id }}">{{ inst }}</option> 
+        {% endif %}
+        {% endfor %}
+      </select>
+      <label for="subject">Subject</label>
+      <select name="subject">
+        {% for sub in subjects %}
+        <option value="{{ sub.id }}">{{ sub.description }}</option> 
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
+{% endblock %}

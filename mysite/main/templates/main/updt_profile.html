@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+{% block title %}Update Profile{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/updt_profile.css' %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="user-profile-container">
+    <img src="{{user.image.url}}" alt="">  
+    <div class="details">
+      <h2>{{user}}</h2>
+      {% if user.role == 'Student' %}
+      <p>{{user.username}}</p>
+      <p>{{user.role}}</p>
+      {% elif user.role == 'Instructor' %}
+      <p>
+        {% if user.instructor.department == 'IT' %}
+        Information Technology
+        {% elif user.instructor.department == 'CS/IS/ACT' %}
+        Computer Science/Information Systems/Associate in Computer Technology
+        {% elif user.instructor.department == 'CCS' %}
+        College on Computing Studies
+        {% endif %}
+      </p>
+      <p>
+        {% if user.instructor.access_lvl == 1 %}
+        Instructor
+        {% elif user.instructor.access_lvl == 2 %}
+        Chairperson
+        {% elif user.instructor.access_lvl == 3 %}
+        Dean
+        {% endif %}
+      </p>
+      {% elif user.is_superuser %}
+      <p>College of Computing Studies</p>
+      <p>Secretary</p>
+      {% endif %}
+      <a href="/logout" class="logout-button">Logout</a>
+    </div>
+  </div>
+  <div class="user-profile-details-container">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h2>Account Details</h2>
+      <hr width="100%" size="4px" color="gold">
+      <div class="full-name">
+        <div class="name first">
+          <label for="id_first_name">First Name</label>
+          <input type="text" value="{{user.first_name}}" name="id_first_name" maxlength="255" class="input_name_text" required>
+        </div>
+        <div class="name last">
+          <label for="id_last_name">Last Name</label>
+          <input type="text" value="{{user.last_name}}" name="id_last_name" maxlength="255" class="input_name_text" required>
+        </div>
+      </div>
+      <div class="input-container">
+        <label for="id_username">Username</label>
+        <input type="text" value="{{user.username}}" name="id_username" class="input_text" disabled required>
+      </div>
+      <div class="input-container">
+        <label for="id_email">Email</label>
+        <input type="text" value="{{user.email}}" name="id_email" class="input_text" disabled required>
+      </div>
+      <div class="input-container">
+        <label for="id_image">Image</label>
+        <input type="file" name="id_image" id="id_image" accept="image/*">
+      </div>
+      <div class="reset-pass">
+        <p>Change Password <a href="">here</a></p>
+      </div>
+      <button type="submit" class="update-btn">Update</button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'main/base.html' %}
+{% block title %}View Subjects{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/edit_subjects.css' %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation/subjects">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <div class="subjects-container">
+    <h2>Subjects</h2>
+    <hr size="4px" width="90%" color="gold"/>
+    
+    <div class="options">
+      <div class="select active">IT</div>
+      <div class="select">CS</div>
+      <div class="select">IS</div>
+      <div class="select">ACT</div>
+    </div>
+    <div class="subjects-content">
+      <div class="subjects active" id="IT">
+        <a href="{% url 'add_subjects_single' crs='IT' %}" class="add-btn">
+          <img src="{% static 'images/icons/plus.png' %}" />
+          <div class="details">
+            <h3>
+              Add a Subject
+            </h3>
+          </div>
+        </a>
+        {% for sub in subjects %}
+        {% if 'IT' == sub.course %}
+        <div class="subject">
+          <div class="sem">{{ sub.semester }} Sem</div>
+          <div class="details">
+            <h3>{{ sub.description }}</h3>
+            <p>{{ sub.code }}</p>
+          </div>
+          <div class="function">
+            <a href="{% url 'delete_subjects' id=sub.id %}" class="del-btn">Delete</a>
+            <a href="{% url 'edit_subjects' id=sub.id %}" class="edit-btn">Edit</a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div class="subjects" id="CS">
+        <a href="{% url 'add_subjects_single' crs='CS' %}" class="add-btn">
+          <img src="{% static 'images/icons/plus.png' %}" />
+          <div class="details">
+            <h3>
+              Add a Subject
+            </h3>
+          </div>
+        </a>
+        {% for sub in subjects %}
+        {% if 'CS' == sub.course %}
+        <div class="subject">
+          <div class="sem">{{ sub.semester }} Sem</div>
+          <div class="details">
+            <h3>{{ sub.description }}</h3>
+            <p>{{ sub.code }}</p>
+          </div>
+          <div class="function">
+            <a href="{% url 'delete_subjects' id=sub.id %}" class="del-btn">Delete</a>
+            <a href="{% url 'edit_subjects' id=sub.id %}" class="edit-btn">Edit</a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div class="subjects" id="IS">
+        <a href="{% url 'add_subjects_single' crs='IS' %}" class="add-btn">
+          <img src="{% static 'images/icons/plus.png' %}" />
+          <div class="details">
+            <h3>
+              Add a Subject
+            </h3>
+          </div>
+        </a>
+        {% for sub in subjects %}
+        {% if 'IS' == sub.course %}
+        <div class="subject">
+          <div class="sem">{{ sub.semester }} Sem</div>
+          <div class="details">
+            <h3>{{ sub.description }}</h3>
+            <p>{{ sub.code }}</p>
+          </div>
+          <div class="function">
+            <a href="{% url 'delete_subjects' id=sub.id %}" class="del-btn">Delete</a>
+            <a href="{% url 'edit_subjects' id=sub.id %}" class="edit-btn">Edit</a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div class="subjects" id="ACT">
+        <a href="{% url 'add_subjects_single' crs='ACT' %}" class="add-btn">
+          <img src="{% static 'images/icons/plus.png' %}" />
+          <div class="details">
+            <h3>
+              Add a Subject
+            </h3>
+          </div>
+        </a>
+        {% for sub in subjects %}
+        {% if 'ACT' == sub.course %}
+        <div class="subject">
+          <div class="sem">{{ sub.semester }} Sem</div>
+          <div class="details">
+            <h3>{{ sub.description }}</h3>
+            <p>{{ sub.code }}</p>
+          </div>
+          <div class="function">
+            <a href="{% url 'delete_subjects' id=sub.id %}" class="del-btn">Delete</a>
+            <a href="{% url 'edit_subjects' id=sub.id %}" class="edit-btn">Edit</a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script>
+    $(document).on('click', '.options .select', function(){
+      $(this).addClass('active').siblings().removeClass('active');
+      var inner_text=$.trim($(this).text());
+      var id_sec = '#' + inner_text;
+      console.log(id_sec);
+      $(id_sec).addClass('active').siblings().removeClass('active');
+    })
+  </script>
+{% endblock %}

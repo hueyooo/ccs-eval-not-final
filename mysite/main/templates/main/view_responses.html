@@ -1,0 +1,204 @@
+{% extends 'main/base.html' %} 
+{% block title %}View Responses{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/view_responses.css' %}{% endblock %} 
+{% block content %}
+  <div class="completion-container">
+    <h2>Completion Chart</h2>
+    <div class="chart">
+      <div class="courses">
+        <div class="btn active" onclick="changePage('it-sec')">IT</div>
+        <div class="btn" onclick="changePage('cs-sec')">CS</div>
+        <div class="btn" onclick="changePage('is-sec')">IS</div>
+        <div class="btn" onclick="changePage('act-sec')">ACT</div>
+      </div>
+      <div class="sections" id="it-sec">
+        {% for sec in section %} 
+        {% if "IT" in sec %}
+        <div class="section">
+          <span class="label"> {{ sec }} </span>
+          <div class="completion-bar">
+            <div id="{{sec}}-progress" class="completion-percentage"></div>
+            {% for percent in percentage %}
+            {% if percent.section == sec %}
+            <span id="{{sec}}" class="percentage">{{percent.percent}}%</span>
+            {% endif %}
+            {% endfor%}
+          </div>
+          {% for z in value %}
+          {% for a in total %}
+          {% if z.section == sec and a.section == sec %}
+          <div class="value"> 
+            {{ z.count }}/{{ a.count }}
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+      <div class="sections" id="cs-sec">
+        {% for sec in section %} 
+        {% if "CS" in sec %}
+        <div class="section">
+          <span class="label"> {{ sec }} </span>
+          <div class="completion-bar">
+            <div id="{{sec}}-progress" class="completion-percentage"></div>
+            {% for percent in percentage %}
+            {% if percent.section == sec %}
+            <span id="{{sec}}" class="percentage">{{percent.percent}}%</span>
+            {% endif %}
+            {% endfor%}
+          </div>
+          {% for z in value %}
+          {% for a in total %}
+          {% if z.section == sec and a.section == sec %}
+          <div class="value"> 
+            {{ z.count }}/{{ a.count }}
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+      <div class="sections" id="is-sec">
+        {% for sec in section %} 
+        {% if "IS" in sec %}
+        <div class="section">
+          <span class="label"> {{ sec }} </span>
+          <div class="completion-bar">
+            <div id="{{sec}}-progress" class="completion-percentage"></div>
+            {% for percent in percentage %}
+            {% if percent.section == sec %}
+            <span id="{{sec}}" class="percentage">{{percent.percent}}%</span>
+            {% endif %}
+            {% endfor%}
+          </div>
+          {% for z in value %}
+          {% for a in total %}
+          {% if z.section == sec and a.section == sec %}
+          <div class="value"> 
+            {{ z.count }}/{{ a.count }}
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+      <div class="sections" id="act-sec">
+        {% for sec in section %} 
+        {% if "ACT" in sec %}
+        <div class="section">
+          <span class="label"> {{ sec }} </span>
+          <div class="completion-bar">
+            <div id="{{sec}}-progress" class="completion-percentage"></div>
+            {% for percent in percentage %}
+            {% if percent.section == sec %}
+            <span id="{{sec}}" class="percentage">{{percent.percent}}%</span>
+            {% endif %}
+            {% endfor%}
+          </div>
+          {% for z in value %}
+          {% for a in total %}
+          {% if z.section == sec and a.section == sec %}
+          <div class="value"> 
+            {{ z.count }}/{{ a.count }}
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+    </div>  
+  </div>
+  <div class="inst_chart-container">
+    <a class="back-btn" href="/evaluation">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+    <a href="{% url 'print_allresponses' name='Responses-Documentation.pdf' %}" class="print-btn">
+      Print All Responses
+    </a>
+    <h2>Instructors' Charts</h2>
+    <hr size="4px" width="90%" color="gold"/>
+    <div class="inst_chart-content">
+      <div class="options">
+        <div class="select active" onclick="changeEval('stud-eval')">Students' Evaluation</div>
+        <div class="select" onclick="changeEval('inst-eval')">Instructors' Evaluation</div>
+      </div>
+      <div id="stud-eval" class="eval">
+        {% for inst in instructors %}
+        {% if inst.access_lvl != 3 %}
+        <a href="{% url 'view_instructor_chart_id_student' id=inst.user.id %}">
+          <img src="{{ inst.user.image.url }}" />
+          <div class="details">
+            <h3>{{ inst }}</h3>
+            {% if inst.department == 'IT' %}
+            <p>Information Technology</p>
+            {% else %}
+            <p>Computer Science/Information Systems/Associate in Computer Technology</p>
+            {% endif %}
+          </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div id="inst-eval" class="eval">
+        {% for inst in instructors %}
+        {% if inst.access_lvl != 3 %}
+        <a href="{% url 'view_instructor_chart_id_instructor' id=inst.user.id %}">
+          <img src="{{ inst.user.image.url }}" />
+          <div class="details">
+            <h3>{{ inst }}</h3>
+            {% if inst.department == 'IT' %}
+            <p>Information Technology</p>
+            {% else %}
+            <p>Computer Science/Information Systems/Associate in Computer Technology</p>
+            {% endif %}
+          </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    {% for sec in section %}
+      var x = document.getElementById('{{sec}}').innerHTML;
+      var y = document.getElementById('{{sec}}-progress');
+      y.style.maxWidth = x;
+      y.style.animation = 'fillBars 2.5s 1';
+    {% endfor %}
+  </script>
+  <script>
+    function changePage(sec_id) {
+      document.getElementById('it-sec').style.display = "none";
+      document.getElementById('is-sec').style.display = "none";
+      document.getElementById('cs-sec').style.display = "none";
+      document.getElementById('act-sec').style.display = "none";
+      document.getElementById(sec_id).style.display = "flex";
+    }
+    function changeEval(select) {
+      document.getElementById('stud-eval').style.display = "none";
+      document.getElementById('inst-eval').style.display = "none";
+      document.getElementById(select).style.display = "flex";
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script>
+    $(document).on('click', '.courses .btn', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+    $(document).on('click', '.options .select', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+  </script>
+{% endblock %}

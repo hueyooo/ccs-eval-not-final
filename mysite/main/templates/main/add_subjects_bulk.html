@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% block title %}Bulk Add{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/add_subjects_bulk.css' %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation/subjects">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Bulk Add Subjects</h1>
+    <hr width="90%" size="4px" color="gold">
+    <div class="notes">
+      <h2>Notes:</h2>
+      <ul>
+        <li>Only accepts CSV(.csv), Excel(.xlxs), or Text(.txt) files</li>
+        <li>Must strictly follow (description,code,course,year,semester) format as header</li>
+        <li>'course' column should only consist of 'IT', 'CS', 'IS', or 'ACT'</li>
+        <li>'year' and 'semester' columns should only consist of 'First', 'Second', 'Third', or 'Fourth' and 'First' or 'Second', respectively</li>
+
+      </ul>
+    </div>
+    {% if messages %}
+      <ul class="errorlist nonfield">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="input-container">
+      {{form}}
+    </div>
+    <button type="submit" class="btn btn-success">Apply</button>
+  </form>
+{% endblock %}

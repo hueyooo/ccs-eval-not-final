@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% block title %}Update Instructor{% endblock %}
+{% load static %}
+{% block style %}{% static 'css/edit_add_instructor_per_sec.css' %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation/subintsec/edit-instructor">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Edit Instructor per Section</h1>
+    <hr width="90%" size="4px" color="gold">
+    {% if messages %}
+    <ul class="errorlist">
+    {% for message in messages %}
+      <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="input-container">     
+      <label for="section">Section</label>
+      <input name="section" value="{{ instructor.section }}" disabled>
+      <label for="instructor">Instructor</label>
+      <select name="instructor">
+        <option value="{{ instructor.inst_id }}">{{ instructor.inst }}</option>
+        {% for inst in instructors %}
+        {% if inst.user_id != instructor.inst_id and inst.access_lvl != 3 %}
+        <option value="{{ inst.user_id }}">{{ inst }}</option> 
+        {% endif %}
+        {% endfor %}
+      </select>
+      <label for="subject">Subject</label>
+      <select name="subject">
+        <option value="{{ instructor.subj_id }}">{{ instructor.subj.description}}</option>
+        {% for sub in subjects %}
+        {% if sub.id != instructor.subj_id %}
+        <option value="{{ sub.id }}">{{ sub.description }}</option> 
+        {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+{% endblock %}

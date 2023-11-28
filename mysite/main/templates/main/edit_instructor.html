@@ -1,0 +1,116 @@
+{% extends 'main/base.html' %} 
+{% block title %}View Sections{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/edit_instructor.css' %}{% endblock %}
+{% block content %}
+  <div class="course-container">
+    <h2>Course and Sections</h2>
+    <div class="sections-container">
+      <div class="courses">
+        <div class="btn active" onclick="changePage('it-sec')">IT</div>
+        <div class="btn" onclick="changePage('cs-sec')">CS</div>
+        <div class="btn" onclick="changePage('is-sec')">IS</div>
+        <div class="btn" onclick="changePage('act-sec')">ACT</div>
+      </div>
+      <div class="sections" id="it-sec">
+        {% for sec in section %} 
+        {% if "IT" in sec %}
+        <div class="section">
+          <span class="label"> {{ sec }} </span>
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+      <div class="sections" id="cs-sec">
+        {% for sec in section %} 
+        {% if "CS" in sec %}
+        <div class="section">
+          <span class="label"> {{ sec }} </span>
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+      <div class="sections" id="is-sec">
+        {% for sec in section %} 
+        {% if "IS" in sec %}
+        <div class="section" onclick="">
+          <span class="label"> {{ sec }} </span>
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+      <div class="sections" id="act-sec">
+        {% for sec in section %} 
+        {% if "ACT" in sec %}
+        <div class="section">
+          <span class="label"> {{ sec }} </span>
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+    </div>  
+  </div>
+  <div class="subintsec-container">
+    <a class="back-btn" href="/evaluation/subintsec">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+    <h2>Instructors per Section</h2>
+    <hr size="4px" width="90%" color="gold"/>
+    <div class="subintsec-content">
+      <div class="subintsec active default">
+        ---Select a Section---
+      </div>
+      {% for sec in section %}
+      <div class="subintsec" id="{{sec}}">
+        <div class="sec">{{sec}}</div>
+        <a href="{% url 'add_instructor' section=sec %}" class="add-btn">
+          <img src="{% static 'images/icons/plus.png' %}" />
+          <div class="details">
+            <h3>
+              Add an Instructor
+            </h3>
+          </div>
+        </a>
+        {% for inst in instructors%}
+        {% if sec == inst.section %}
+        <div class="subjects">
+          <img src="{{ inst.inst.user.image.url }}" />
+          <div class="details">
+            <h3>{{ inst.inst }}</h3>
+            <p>{{ inst.subj }}</p>
+          </div>
+          <div class="function">
+            <a href="{% url 'delete_instructor' section=sec id=inst.id %}" class="del-btn">Delete</a>
+            <a href="{% url 'edit_instructor_per_id' section=sec id=inst.inst.user.id %}" class="edit-btn">Edit</a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <script>
+    function changePage(sec_id) {
+      document.getElementById('it-sec').style.display = "none";
+      document.getElementById('is-sec').style.display = "none";
+      document.getElementById('cs-sec').style.display = "none";
+      document.getElementById('act-sec').style.display = "none";
+      document.getElementById(sec_id).style.display = "flex";
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script>
+    $(document).on('click', '.courses .btn', function(){
+      $(this).addClass('active').siblings().removeClass('active');
+    })
+    $(document).on('click', '.sections .section', function(){
+      $(this).addClass('active').siblings().removeClass('active');
+      var inner_text=$.trim($(this).text());
+      var id_sec = '#' + inner_text;
+      console.log(id_sec);
+      $(id_sec).addClass('active').siblings().removeClass('active');
+    })
+  </script>
+{% endblock %}

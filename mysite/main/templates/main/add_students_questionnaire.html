@@ -1,0 +1,24 @@
+{% extends "main/base.html" %} 
+{% block title %}Add Question(Students){% endblock %} 
+{% load static %}
+{% block style %}{% static 'css/edit_add_questionnaire.css' %}{% endblock %}
+{% block content %}
+  <div class="image-bg">
+    <a class="back-btn" href="/evaluation/edit_students_questionnaire">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Add Question</h1>
+    <hr width="90%" size="4px" color="gold">
+    <div class="input-container">     
+      <label for="category">Category</label>
+      <input name="category" value="{{category}}" required disabled>
+      <label for="code">Question</label>
+      <textarea name="question" cols="40" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
+{% endblock %}

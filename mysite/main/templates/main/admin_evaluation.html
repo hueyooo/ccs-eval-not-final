@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %} 
+{% block title %}Evaluation{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/admin_evaluation.css' %}{% endblock %} 
+{% block content %}
+  <div class="content-container">
+    <div class="admin-container">
+      <a href="/evaluation/edit_students_questionnaire" class="questionnaire-box">
+        <div class="title">
+          Edit Students' Questionnaire
+        </div>
+      </a>
+      <a href="/evaluation/edit_instructors_questionnaire" class="questionnaire-box">
+        <div class="title">
+          Edit Instructors' Questionnaire
+        </div>
+      </a>
+      <a href="/evaluation/view" class="responses-box">
+        <div class="title">
+          View Responses  
+        </div>
+      </a>
+      <a href="/evaluation/subintsec" class="subintsec-box">
+        <div class="title">
+          View/Edit Instructor per Section
+        </div>
+      </a>
+      <a href="/evaluation/subjects" class="subjects-box">
+        <div class="title">
+          View/Edit Subjects
+        </div>
+      </a>
+      {% if user.role == 'Instructor' %}
+      <a href="/evaluation/dean" class="evaluation-box">
+        <div class="title">
+          Evaluate Chairpersons     
+        </div>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endblock %}

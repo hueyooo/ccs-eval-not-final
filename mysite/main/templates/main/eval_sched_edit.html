@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %} 
+{% block title %}Edit Evaluation Schedule{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/eval_sched.css' %}{% endblock %} 
+{% block content %}
+
+
+  <div class="image-bg">
+    <a class="back-btn" href="/settings">
+      <img src="{% static 'images/icons/back.png' %}" alt="">
+      Go back
+    </a>
+  </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Edit Evaluation Schedule</h1>
+    <hr width="90%" size="4px" color="gold">
+    <div class="notes">
+      <h2>Notes:</h2>
+      <ul>
+        <li>Once the evaluation schedule is ongoing, adding questions, subjects, and instructors per section won't be available</li>
+        <li>Also, closing the evaluation will archive all of the current data collected</li>
+      </ul>
+    </div>
+    <div class="input-container">
+      {% if messages %}
+      <ul class="errorlist">
+      {% for message in messages %}
+        <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+      {{form}}
+    </div>
+    <div class="buttons">
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" id="delete">Close Evaluation</button>
+    </div>
+    
+  </form>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const myButton = document.getElementById("delete");
+
+      myButton.addEventListener("click", function () {
+        const warningMessage = "Are you sure you want to proceed?";
+
+        if (confirm(warningMessage)) {
+          alert("Evaluation schedule deleted");
+          window.location.href = "{% url 'delete_evalsched' %}";
+        } else {
+        }
+      });
+    });
+  </script>
+{% endblock %}

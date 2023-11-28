@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %} 
+{% block title %}Settings{% endblock %} 
+{% load static %} 
+{% block style %}{% static 'css/settings.css' %}{% endblock %} 
+{% block content %}
+  <div class="content-container">
+    <div class="settings-container">
+      {% if check == 0 %}
+      <a href="/settings/evaluation_sched" class="evalsched-box">
+        <div class="title">
+          Set Evaluation Schedule
+        </div>
+      </a>
+      {% else %}
+      <a href="/settings/evaluation_sched" class="evalsched-box">
+        <div class="title">
+          Edit Evaluation Schedule
+        </div>
+      </a>
+      {% endif %}
+      <a href="/sign-up" class="sign_up-box">
+        <div class="title">
+          Register Users
+        </div>
+      </a>
+      <a href="" class="email-box">
+        <div class="title">
+          Send Email (Notification)
+        </div>
+      </a>
+    </div>
+  </div>
+{% endblock %}
